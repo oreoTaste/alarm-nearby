@@ -11,7 +11,7 @@ export default function Sidebar({
   displayList, isSorted, setIsSorted, selectedPos, 
   formData, setFormData, onSave, onCancelSelection, 
   onToggleAlert, onDelete, 
-  globalDistance, setGlobalDistance 
+  globalDistance, setGlobalDistance, myPos 
 }) {
   const [confirmData, setConfirmData] = useState(null);
   const [isDesktop, setIsDesktop] = useState(window.innerWidth >= 768);
@@ -32,9 +32,11 @@ export default function Sidebar({
     );
 
     if (isUserConfirmed) {
-      openExternalMap(type, confirmData.lat, confirmData.lng, confirmData.title);
+      // 💡 openExternalMap의 5번째 인자로 상위에서 받아온 myPos를 넘겨줍니다.
+      openExternalMap(type, confirmData.lat, confirmData.lng, confirmData.title, myPos);
       setConfirmData(null);
     }
+
   };
 
   // 인라인 스타일로 레이아웃 고정

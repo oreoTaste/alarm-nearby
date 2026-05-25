@@ -204,7 +204,8 @@ export default function App() {
           onDelete={(id) => setLocations(locations.filter(l => l.id !== id))} 
           globalDistance={globalDistance} 
           setGlobalDistance={setGlobalDistance} 
-        />
+          myPos={myPos}
+	/>
       </APIProvider>
     </div>
   );
